@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * This class is an implementation of the user defined hashtable without synchronization support .
  * @author sreerekha
@@ -7,16 +9,18 @@
 public class MyHashTable<K,V> implements IHashTable<K, V>{
 	
 	public static final int SIZE = 37 ;
-	private K keysArray[] ;
+	public Entry<K,V> entriesArray[] ;
 	
+	@SuppressWarnings("unchecked")
 	public MyHashTable ()
 	{
-		keysArray = (K[]) new Object[SIZE] ;
+		entriesArray = new Entry[SIZE];
 	}
 	
+	@SuppressWarnings("unchecked")
 	public MyHashTable (int size)
 	{
-		keysArray = (K[]) new Object[size] ;
+		entriesArray = new Entry[size] ;
 	}
 	
 
@@ -25,31 +29,51 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 		
 		int index = hashFunction(key);
 		System.out.println("index is :"+index);
-		if (keysArray[index] == null )
+		Entry<K,V> entry = new Entry<K,V>(key,value);
+		entry.setNextEntry(null);
+		if (entriesArray[index] == null ) // for putting the first element
 		{
-			keysArray[index] = key ;
-		//	Entry<K,V> entry = new Entry<K,V>(key,value);
+			entriesArray[index] = entry ;
 		}
-		//else
-			
+		else // if there is already a list of elements , traverse to the end and add the entry.
+		{
+			Entry<K, V> tempEntry = entriesArray[index];
+			Entry<K, V> prevEntry = tempEntry ;
+			while(tempEntry != null)
+			{   
+				prevEntry = tempEntry ;
+				tempEntry = tempEntry.getNextEntry();
+			}
+			prevEntry.setNextEntry(entry);
+		}		
 		
 	}
 
 	@Override
-	public V get(K key) {
+	public ArrayList<V> get(K key) {
 		int index = hashFunction(key);
-		if (keysArray[index] != null)
+		Entry<K, V> entry = entriesArray[index];
+		
+		ArrayList <V> ValuesList  = new ArrayList<V>();
+		while (entry != null)
 		{
-		//return (Entry)KeysArray[index].get
+			K tempKey = entry.getKey() ;
+			if(tempKey == key)
+			{
+				V Value = entry.getValue();
+				ValuesList.add(Value);
+			}
+			
+			entry = entry.getNextEntry();
 		}
-		return null;
+		return ValuesList;
 	}
 
 	@Override
 	public void delete(K key) {
 		
 		int index = hashFunction(key);
-		keysArray[index] = null ;
+		entriesArray[index] = null ;
 		
 	}
 
@@ -58,7 +82,7 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 		
 		for(int i = 0 ; i< size();i++ )
 		{
-			keysArray[i] = null ;
+			entriesArray[i] = null ;
 		}
 		
 	}
@@ -66,7 +90,7 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 	@Override
 	public int size() {
 		// TODO Auto-generated method stub
-		return this.keysArray.length;
+		return this.entriesArray.length;
 	}
 	/**
 	 * this function is supposed to calculate the index in the array where the corresponding entry needs to be stored.
@@ -76,7 +100,7 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 	private int hashFunction(K Key)
 	{
 		int hashedIndex = Key.hashCode();
-		System.out.println("Hashcodes :"+hashedIndex);
+		//System.out.println("Hashcodes :"+hashedIndex);
 		int sizeOfTable = size() ;
 		if (hashedIndex > sizeOfTable )
 		{
@@ -85,5 +109,6 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 		return hashedIndex;
 	
 	}
+	
 
 }

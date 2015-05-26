@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+
 
 public class MyHashTableTest {
 	
@@ -11,6 +14,14 @@ public class MyHashTableTest {
 		for(int i =0;i<size;i++)
 		{
 			ht.put(KeysArray[i], ValuesArray[i]);
+		}
+		ArrayList<String> list = ht.get("V");
+		
+		Iterator<String> iterator = list.iterator();
+		
+		while(iterator.hasNext())
+		{
+			System.out.println(iterator.next());
 		}
 		
 		

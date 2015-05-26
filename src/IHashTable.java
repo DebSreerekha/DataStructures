@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 
 
 /**
@@ -12,7 +14,7 @@ public interface IHashTable<K,V> {
 
 	public void put(K key,V value);
 	
-	public V get(K key);
+	public ArrayList<V> get(K key);
 	
 	public void delete(K key);
 	
