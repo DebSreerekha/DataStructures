@@ -1,9 +1,5 @@
 package ds.hashtable;
 import java.util.ArrayList;
-//import java.util.HashSet;
-import java.util.SortedSet;
-
-
 
 /**
  * This class is an implementation of the user defined hashtable without synchronization support .
