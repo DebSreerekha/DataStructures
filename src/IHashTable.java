@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.SortedSet;
 
 
 
@@ -21,5 +22,7 @@ public interface IHashTable<K,V> {
 	public void removeAll();
 	
 	public int  size();
+	
+	public SortedSet<K> keys();
 
 }

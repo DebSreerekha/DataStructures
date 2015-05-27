@@ -1,4 +1,8 @@
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.SortedSet;
+
+
 
 /**
  * This class is an implementation of the user defined hashtable without synchronization support .
@@ -9,18 +13,21 @@ import java.util.ArrayList;
 public class MyHashTable<K,V> implements IHashTable<K, V>{
 	
 	public static final int SIZE = 37 ;
-	public Entry<K,V> entriesArray[] ;
+	private Entry<K,V> entriesArray[] ;
+	private HashSet<K> keySet ;
 	
 	@SuppressWarnings("unchecked")
 	public MyHashTable ()
 	{
 		entriesArray = new Entry[SIZE];
+		keySet = new HashSet<K>();
 	}
 	
 	@SuppressWarnings("unchecked")
 	public MyHashTable (int size)
 	{
 		entriesArray = new Entry[size] ;
+		keySet = new HashSet<K>();
 	}
 	
 
@@ -109,6 +116,14 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 		return hashedIndex;
 	
 	}
+
+	@Override
+	public SortedSet<K> keys() {
+		
+		return null;
+	}
+
+	
 	
 
 }
