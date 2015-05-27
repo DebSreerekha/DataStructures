@@ -35,7 +35,7 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 	@Override
 	public void put(K key, V value) {
 		
-		int index = hashFunction(key);
+		int index = hashFunction(key );
 		System.out.println("index is :"+index);
 		Entry<K,V> entry = new Entry<K,V>(key,value);
 		entry.setNextEntry(null);
@@ -66,7 +66,7 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 		while (entry != null)
 		{
 			K tempKey = entry.getKey() ;
-			if(tempKey == key)
+			if(tempKey.equals( key))
 			{
 				V Value = entry.getValue();
 				ValuesList.add(Value);
@@ -110,9 +110,10 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 		int hashedIndex = Key.hashCode();
 		//System.out.println("Hashcodes :"+hashedIndex);
 		int sizeOfTable = size() ;
-		if (hashedIndex > sizeOfTable )
+		 hashedIndex = Math.abs(hashedIndex);
+		if ( hashedIndex> sizeOfTable )
 		{
-			hashedIndex = Math.abs(hashedIndex)%sizeOfTable ;
+			hashedIndex = hashedIndex%sizeOfTable ;
 		}
 		return hashedIndex;
 	
