@@ -1,6 +1,6 @@
 package ds.hashtable;
 import java.util.ArrayList;
-import java.util.HashSet;
+//import java.util.HashSet;
 import java.util.SortedSet;
 
 
@@ -15,20 +15,20 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 	
 	public static final int SIZE = 37 ;
 	private Entry<K,V> entriesArray[] ;
-	private HashSet<K> keySet ;
+	//private HashSet<K> keySet ;
 	
 	@SuppressWarnings("unchecked")
 	public MyHashTable ()
 	{
 		entriesArray = new Entry[SIZE];
-		keySet = new HashSet<K>();
+		//keySet = new HashSet<K>();
 	}
 	
 	@SuppressWarnings("unchecked")
 	public MyHashTable (int size)
 	{
 		entriesArray = new Entry[size] ;
-		keySet = new HashSet<K>();
+	//	keySet = new HashSet<K>();
 	}
 	
 
@@ -36,7 +36,7 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 	public void put(K key, V value) {
 		
 		int index = hashFunction(key );
-		System.out.println("index is :"+index);
+		//System.out.println("index is :"+index);
 		Entry<K,V> entry = new Entry<K,V>(key,value);
 		entry.setNextEntry(null);
 		if (entriesArray[index] == null ) // for putting the first element
@@ -59,6 +59,7 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 
 	@Override
 	public ArrayList<V> get(K key) {
+		Long ctime1 = System.currentTimeMillis();
 		int index = hashFunction(key);
 		Entry<K, V> entry = entriesArray[index];
 		
@@ -74,6 +75,10 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 			
 			entry = entry.getNextEntry();
 		}
+		Long ctime2 = System.currentTimeMillis();
+		System.out.println(ctime1 );
+		System.out.println(ctime2);
+		System.out.println("TimeTaken for lookup :" +(ctime2 -ctime1));
 		return ValuesList;
 	}
 
@@ -116,7 +121,6 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 			hashedIndex = hashedIndex%sizeOfTable ;
 		}
 		return hashedIndex;
-	
 	}
 
 	@Override
@@ -124,8 +128,4 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 		
 		return null;
 	}
-
-	
-	
-
 }
