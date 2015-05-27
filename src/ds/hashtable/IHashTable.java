@@ -24,6 +24,5 @@ public interface IHashTable<K,V> {
 	
 	public int  size();
 	
-	public SortedSet<K> keys();
-
+	
 }

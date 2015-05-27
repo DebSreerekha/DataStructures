@@ -15,7 +15,7 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 	
 	public static final int SIZE = 37 ;
 	private Entry<K,V> entriesArray[] ;
-	//private HashSet<K> keySet ;
+	
 	
 	@SuppressWarnings("unchecked")
 	public MyHashTable ()
@@ -123,9 +123,5 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 		return hashedIndex;
 	}
 
-	@Override
-	public SortedSet<K> keys() {
-		
-		return null;
-	}
+	
 }
