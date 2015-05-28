@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class MyHashTable<K,V> implements IHashTable<K, V>{
 	
-	public static final int SIZE = 37 ;
+	public static final int SIZE = 199 ;
 	private Entry<K,V> entriesArray[] ;
 	
 	
@@ -17,14 +17,14 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 	public MyHashTable ()
 	{
 		entriesArray = new Entry[SIZE];
-		//keySet = new HashSet<K>();
+		
 	}
 	
 	@SuppressWarnings("unchecked")
 	public MyHashTable (int size)
 	{
 		entriesArray = new Entry[size] ;
-	//	keySet = new HashSet<K>();
+	
 	}
 	
 
@@ -32,7 +32,6 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 	public void put(K key, V value) {
 		
 		int index = hashFunction(key );
-		//System.out.println("index is :"+index);
 		Entry<K,V> entry = new Entry<K,V>(key,value);
 		entry.setNextEntry(null);
 		if (entriesArray[index] == null ) // for putting the first element
@@ -109,7 +108,7 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 	private int hashFunction(K Key)
 	{
 		int hashedIndex = Key.hashCode();
-		//System.out.println("Hashcodes :"+hashedIndex);
+		
 		int sizeOfTable = size() ;
 		 hashedIndex = Math.abs(hashedIndex);
 		if ( hashedIndex> sizeOfTable )
