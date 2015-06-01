@@ -19,6 +19,15 @@ public class Entry<K,V> {
 	}
 	
 	
+	public Entry(Entry<K, V> prevEntry) {
+		
+			this.key = prevEntry.key ;
+			this.value = prevEntry.value ;
+			this.nextEntry = prevEntry.nextEntry ;
+		
+	}
+
+
 	public K getKey()
 	{
 		return key;

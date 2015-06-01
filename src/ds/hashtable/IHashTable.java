@@ -22,7 +22,6 @@ public interface IHashTable<K,V> {
 	
 	public void removeAll();
 	
-	public int  size();
-	
-	
+	public int entriesCount();
+
 }

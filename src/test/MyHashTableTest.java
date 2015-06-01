@@ -18,7 +18,7 @@ public class MyHashTableTest {
 		{
 			ht.put(KeysArray[i], ValuesArray[i]);
 		}
-		ArrayList<String> list = ht.get("V");
+		ArrayList<String> list = ht.get("I");
 		
 		Iterator<String> iterator = list.iterator();
 		
@@ -27,6 +27,28 @@ public class MyHashTableTest {
 			System.out.println(iterator.next());
 		}
 		
+		ht.delete("I");
+		
+		ArrayList<String> deletedList = ht.get("I");
+		
+		System.out.println("after delete");
+		Iterator<String> dlIterator = deletedList.iterator();
+		
+		while(dlIterator.hasNext())
+		{
+			System.out.println(dlIterator.next());
+		}
+		
+		ht.removeAll();
+		ArrayList<String> testList = ht.get("I");
+		
+		System.out.println("after deleting all");
+		Iterator<String> dellIterator = testList.iterator();
+		
+		while(dellIterator.hasNext())
+		{
+			System.out.println(dellIterator.next());
+		}
 		
 	}
 

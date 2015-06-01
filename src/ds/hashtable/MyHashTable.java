@@ -11,6 +11,7 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 	
 	public static final int SIZE = 199 ;
 	private Entry<K,V> entriesArray[] ;
+	private int entriesCount;
 	
 	
 	@SuppressWarnings("unchecked")
@@ -48,7 +49,8 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 				tempEntry = tempEntry.getNextEntry();
 			}
 			prevEntry.setNextEntry(entry);
-		}		
+		}	
+		this.entriesCount++;
 		
 	}
 
@@ -81,7 +83,33 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 	public void delete(K key) {
 		
 		int index = hashFunction(key);
-		entriesArray[index] = null ;
+		Entry<K, V> currentEntry = entriesArray[index];
+		Entry<K, V> prevEntry = currentEntry;
+		
+		while (currentEntry != null){
+			
+			K tempKey = currentEntry.getKey() ;
+			
+			if(tempKey.equals( key))
+			{
+				//remove the current entry
+				
+				prevEntry = currentEntry.getNextEntry();
+				Entry <K,V> tempEntry = null;
+				if(prevEntry != null)
+				{
+					 tempEntry = new Entry<K,V>(prevEntry) ;
+				}				
+				entriesArray[index] = tempEntry ;
+				//currentEntry = null ;
+				currentEntry = tempEntry;
+			}
+			else
+			{
+				prevEntry = currentEntry ;
+				currentEntry = currentEntry.getNextEntry();
+			}
+		}
 		
 	}
 
@@ -96,9 +124,14 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 	}
 
 	@Override
-	public int size() {
+	public int entriesCount() {
 		// TODO Auto-generated method stub
-		return this.entriesArray.length;
+		return this.entriesCount ;
+	}
+	
+	private int size() {
+		// TODO Auto-generated method stub
+		return this.entriesArray.length ;
 	}
 	/**
 	 * this function is supposed to calculate the index in the array where the corresponding entry needs to be stored.
