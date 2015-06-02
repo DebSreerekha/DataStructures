@@ -56,7 +56,7 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 
 	@Override
 	public ArrayList<V> get(K key) {
-		Long ctime1 = System.currentTimeMillis();
+		
 		int index = hashFunction(key);
 		Entry<K, V> entry = entriesArray[index];
 		
@@ -72,10 +72,7 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 			
 			entry = entry.getNextEntry();
 		}
-		Long ctime2 = System.currentTimeMillis();
-		System.out.println(ctime1 );
-		System.out.println(ctime2);
-		System.out.println("TimeTaken for lookup :" +(ctime2 -ctime1));
+		
 		return ValuesList;
 	}
 
