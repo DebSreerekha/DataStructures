@@ -62,7 +62,7 @@ public class MyHashTableTest {
 		assertEquals(0,arraySize);
 	}
 	@Test
-	public void checkDeleteAll(){
+	public void checkDeleteAll() {
 		MyHashTable<String,String> hashtable = new MyHashTable<String,String> ();
 		
 		String [] KeysArray = {"V","I","B","G","Y","O","R","V"};
