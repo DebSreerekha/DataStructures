@@ -21,12 +21,7 @@ public class MyHashTableTest {
 		
 		String [] KeysArray = {"V","I","B","G","Y","O","R","V"};
 		String [] ValuesArray = {"Violet","Indigo","Blue","Green","Yellow","Orange","Red","Vitriol"};
-		int size = KeysArray.length ;
-		
-		for(int i =0;i<size;i++)
-		{
-			hashtable.put(KeysArray[i], ValuesArray[i]);
-		}
+		hashtable.putPairs(KeysArray, ValuesArray);
 		ArrayList<String> list = hashtable.get("V");
 		
 		assertEquals("Violet",list.get(0));
@@ -39,12 +34,7 @@ public class MyHashTableTest {
 		
 		String [] KeysArray = {"V","I","B","G","Y","O","R","V"};
 		String [] ValuesArray = {"Violet","Indigo","Blue","Green","Yellow","Orange","Red","Vitriol"};
-		int size = KeysArray.length ;
-		
-		for(int i =0;i<size;i++)
-		{
-			hashtable.put(KeysArray[i], ValuesArray[i]);
-		}
+		hashtable.putPairs(KeysArray, ValuesArray);
 		
 		hashtable.delete("I");
 		
@@ -61,12 +51,7 @@ public class MyHashTableTest {
 		
 		String [] KeysArray = {"V","I","B","G","Y","O","R","V"};
 		String [] ValuesArray = {"Violet","Indigo","Blue","Green","Yellow","Orange","Red","Vitriol"};
-		int size = KeysArray.length ;
-		
-		for(int i =0;i<size;i++)
-		{
-			hashtable.put(KeysArray[i], ValuesArray[i]);
-		}
+		hashtable.putPairs(KeysArray, ValuesArray);
 		
 		hashtable.delete("V");
 		
@@ -82,13 +67,8 @@ public class MyHashTableTest {
 		
 		String [] KeysArray = {"V","I","B","G","Y","O","R","V"};
 		String [] ValuesArray = {"Violet","Indigo","Blue","Green","Yellow","Orange","Red","Vitriol"};
-		int size = KeysArray.length ;
 		
-		for(int i =0;i<size;i++)
-		{
-			hashtable.put(KeysArray[i], ValuesArray[i]);
-		}
-		
+		hashtable.putPairs(KeysArray, ValuesArray);
 		hashtable.removeAll();
 		
 		ArrayList<String> deletedList = hashtable.get("I");
@@ -103,13 +83,8 @@ public class MyHashTableTest {
 		
 		String [] KeysArray = {"V","I","B","G","Y","O","R","V"};
 		String [] ValuesArray = {"Violet","Indigo","Blue","Green","Yellow","Orange","Red","Vitriol"};
-		int size = KeysArray.length ;
+		hashtable.putPairs(KeysArray, ValuesArray);
 		
-		for(int i =0;i<size;i++)
-		{
-			hashtable.put(KeysArray[i], ValuesArray[i]);
-		}
-		
-		assertEquals(size,hashtable.entriesCount());
+		assertEquals(KeysArray.length,hashtable.entriesCount());
 	}
 }

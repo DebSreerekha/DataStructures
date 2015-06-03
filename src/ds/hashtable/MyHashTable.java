@@ -148,5 +148,18 @@ public class MyHashTable<K,V> implements IHashTable<K, V>{
 		return hashedIndex;
 	}
 
+	@Override
+	public void putPairs(K[] keysArray, V[] valuesArray) {
+		// TODO Auto-generated method stub
+		int size = keysArray.length ;
+		
+		for(int i =0;i<size;i++)
+		{
+			this.put(keysArray[i], valuesArray[i]);
+		}
+		
+		
+	}
+
 	
 }

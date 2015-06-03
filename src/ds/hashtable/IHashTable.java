@@ -23,5 +23,7 @@ public interface IHashTable<K,V> {
 	public void removeAll();
 	
 	public int entriesCount();
+	
+	public void putPairs(K[] keys,V[] values);
 
 }
